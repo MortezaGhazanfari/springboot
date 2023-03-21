@@ -4,15 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@ToString
 public class ToDo {
 
     @Id
@@ -21,12 +21,7 @@ public class ToDo {
     private String title;
     private String description;
     private String date;
+    private Boolean status;
 
-
-    public ToDo(String title, String description, String date) {
-        this.title = title;
-        this.description = description;
-        this.date = date;
-    }
 
 }
