@@ -15,7 +15,7 @@ public class DatabasePopulator implements CommandLineRunner {
     private final ToDoRepository toDoRepository;
     @Override
     public void run(String... args) throws Exception {
-        final ToDo toDo = new ToDo(null,"Schulung","Springboot","März",false);
+        final ToDo toDo = new ToDo(null,"Schulung","Springboot","März",true);
         final ToDo toDo1 = new ToDo(null,"Termin", "Hausarzt", "Morgen", false);
         final ToDo toDo2 = new ToDo(null,"Termin", "Hausarzt", "Morgen", false);
         toDoRepository.saveAll(List.of(toDo,toDo1,toDo2));

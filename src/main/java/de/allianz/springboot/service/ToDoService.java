@@ -1,5 +1,6 @@
 package de.allianz.springboot.service;
 
+import de.allianz.springboot.dto.ToDoCreate;
 import de.allianz.springboot.entity.ToDo;
 import de.allianz.springboot.repository.ToDoRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,11 +27,11 @@ public class ToDoService {
     }
     public ToDo updateToDo(ToDo toDo)
     {
-        toDoRepository.findById(toDo.getId()).orElseThrow(()->new EntityNotFoundException("ToDo was not found!"));
+        toDoRepository.findById(toDo.getId()).orElseThrow(()->new EntityNotFoundException("ToDo with the id" + toDo.getId() + " was not found!"));
         return toDoRepository.save(toDo);
     }
     public ToDo findById(Long id){
-        return toDoRepository.findById(id).orElseThrow(()->new EntityNotFoundException("ToDo was not found!"));
+        return toDoRepository.findById(id).orElseThrow(()->new EntityNotFoundException("ToDo with the id "+ id + " was not found!"));
     }
 
     public List<ToDo> getAllToDos(){
@@ -39,6 +40,10 @@ public class ToDoService {
 
     public List<ToDo> getDoneTodos(){
         return toDoRepository.findAllByStatusIsTrue();
+    }
+
+    public List<ToDo> getOpenTodos(){
+        return toDoRepository.findAllByStatusIsFalse();
     }
     public Integer getNumberOfDoneToDos(){
 
@@ -51,6 +56,7 @@ public class ToDoService {
     public void removeToDo(ToDo toDo){
         toDoRepository.delete(toDo);
     }
+
 
 
 }
