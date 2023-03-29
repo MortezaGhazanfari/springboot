@@ -33,7 +33,7 @@ public class TodoController {
     }
 
     @PutMapping
-    public ResponseEntity<ToDo> updateToDo(@Valid @RequestBody ToDoUpdate toDoUpdateDto){
+    public ResponseEntity<ToDo> updateToDo(@Valid @RequestBody ToDoUpdate toDoUpdateDto) throws Exception {
         ToDo toDo = this.toDoService.findById(toDoUpdateDto.getId());
         mapper.map(toDoUpdateDto, toDo);
         return new ResponseEntity<>(toDoService.updateToDo(toDo),HttpStatus.OK);
